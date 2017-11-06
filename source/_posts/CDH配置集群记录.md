@@ -1,9 +1,14 @@
 ---
 title: CDH配置集群记录
 date: 2017-09-05 18:02:03
-tags: InstallInstruction
+tags: 
+ - InstallInstruction
+ - configure
+categories: installation
 ---
 CDH is Cloudera’s 100% open source platform distribution, including Apache Hadoop and built specifically to meet enterprise demands. CDH delivers everything you need for enterprise use right out of the box. By integrating Hadoop with more than a dozen other critical open source projects, Cloudera has created a functionally advanced system that helps you perform end-to-end Big Data workflows.
+
+<!--more-->
 
 这篇博客用来记录使用CDH安装工具部署集群的实验。
 
@@ -60,7 +65,7 @@ $ passwd
 允许以root用户身份ssh登陆
 
 ``` bash
-$vim /etc/ssh/sshd_config
+$ vim /etc/ssh/sshd_config
 ```
 
 注释掉
@@ -114,3 +119,22 @@ $ vim /etc/ntp.conf
 ``` bash
 server ntp.nju.edu.cn
 ```
+
+``` bash
+$ sudo service ntp restart
+$ ntpq -p // 查看连接情况
+```
+
+连接bras
+
+``` bash
+$ curl -d "username=&password=" "http://p.nju.edu.cn/portal_io/login"
+```
+
+向集群中添加新节点，其中有一个查询主机域名的命令：
+
+``` bash
+$ host -t PTR 114.212.81.68 
+```
+
+这时返回的域名是-114-212-81-68.nju.edu.cn,在host文件中无法找到，会导致安装无法继续，可以将域名添加到hosts文件中，或者备份/usr/bin/host文件。

@@ -3,6 +3,11 @@ title: Docklet experiment record
 date: 2017-09-18 14:01:01
 tags:
 ---
+
+记录简单的docklet熟悉实验。
+
+<!--more-->
+
 ## 初次使用
 
 在创建了工作空间后第一次使用要对镜像进行配置，使其能够连接外网，安装软件等。
